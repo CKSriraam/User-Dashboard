@@ -26,91 +26,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
+import UserCard from './components/UserCard';
+
 function UserCardItem({ user }) {
-  return (
-    <Card
-      className="neon-card"
-      sx={{
-        borderRadius: "20px",
-        overflow: "hidden",
-        width: "100%",
-        height: "340px",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        textAlign: "center",
-        p: 2,
-        border: "2px solid #00e5ff",
-        boxShadow: "0 0 20px #00e5ff",
-        background: "rgba(22, 27, 34, 0.9)",
-        transition: "transform 0.3s ease, box-shadow 0.3s ease",
-        "&:hover": {
-          transform: "translateY(-8px)",
-          boxShadow: "0 0 30px #00e5ff",
-        },
-      }}
-    >
-      <Avatar
-        alt={user.name}
-        src={`https://robohash.org/${user.id}?set=set5`}
-        sx={{
-          width: 90,
-          height: 90,
-          mb: 2,
-          border: "3px solid #00e5ff",
-          boxShadow: "0 0 15px #00e5ff",
-        }}
-      />
-      <Typography
-        variant="h6"
-        sx={{
-          fontWeight: 600,
-          color: "#00e5ff",
-          mt: 1,
-          userSelect: "none",
-        }}
-      >
-        {user.name}
-      </Typography>
-      <Typography
-        variant="subtitle2"
-        sx={{ color: "#f50057", mb: 2, fontWeight: 500 }}
-      >
-        @{user.username}
-      </Typography>
-      <CardContent sx={{ p: 0 }}>
-        <Typography
-          variant="body2"
-          sx={{ display: "flex", alignItems: "center", mb: 1 }}
-        >
-          <Email fontSize="small" sx={{ mr: 1, color: "#00e5ff" }} />
-          {user.email}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{ display: "flex", alignItems: "center", mb: 1 }}
-        >
-          <Phone fontSize="small" sx={{ mr: 1, color: "#00e5ff" }} />
-          {user.phone}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{ display: "flex", alignItems: "center", mb: 1 }}
-        >
-          <Language fontSize="small" sx={{ mr: 1, color: "#00e5ff" }} />
-          {user.website}
-        </Typography>
-        <Typography
-          variant="body2"
-          sx={{ display: "flex", alignItems: "center" }}
-        >
-          <LocationOn fontSize="small" sx={{ mr: 1, color: "#00e5ff" }} />
-          {user.address.city}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
+  return <UserCard user={user} />;
 }
 
 function App() {
@@ -163,20 +82,20 @@ function App() {
       >
         <Toolbar sx={{ justifyContent: "space-between", position: "relative" }}>
           <Typography
-            variant="h6"
+            variant="h4"
             sx={{
               fontWeight: 900,
               position: "absolute",
               left: "50%",
               transform: "translateX(-50%)",
-              background: "linear-gradient(90deg, #00e5ff, #7c4dff, #ff4081)",
-              WebkitBackgroundClip: "text",
-              color: "transparent",
+              color: "#f82d09ff",
               fontFamily: "Montserrat, sans-serif",
-              textShadow: "0 2px 8px rgba(0,0,0,0.3)",
+              textShadow: "10 10 120px #86007bff",
+              letterSpacing: "1px",
+              textTransform: "uppercase"
             }}
           >
-            User Dashboard
+            USER DASHBOARD
           </Typography>
           <div style={{ display: "flex", alignItems: "center" }}>
             <IconButton color="inherit" onClick={() => setDarkMode(!darkMode)}>
@@ -191,7 +110,7 @@ function App() {
       <Container sx={{ mt: 5, mb: 5 }}>
         <div className="d-flex justify-content-center mb-4">
           <TextField
-            label="Search users..."
+            label  ="Search users..."
             variant="outlined"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
